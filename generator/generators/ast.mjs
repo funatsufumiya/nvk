@@ -4,7 +4,7 @@
 
 **/
 import xml from "xml-js";
-import pkg from "../../package.json";
+import pkg from "../../package.json" with { type: "json" };
 import parseDocumentation from "../doc-parser.mjs";
 
 import {

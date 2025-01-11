@@ -1,6 +1,6 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
-import pkg from "../../package.json";
+import pkg from "../../package.json" with { type: "json" };
 
 import {
   warn,

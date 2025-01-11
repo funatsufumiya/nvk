@@ -6,7 +6,7 @@
 import fs from "fs";
 import yauzl from "yauzl";
 import nunjucks from "nunjucks";
-import pkg from "../../package.json";
+import pkg from "../../package.json" with { type: "json" };
 import parseDocumentation from "../doc-parser.mjs";
 
 import {

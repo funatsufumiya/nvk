@@ -1,8 +1,14 @@
-const fs = require("fs");
-const ncp = require("ncp");
-const { spawn } = require("child_process");
+// const fs = require("fs");
+import fs from "fs";
+// const ncp = require("ncp");
+import ncp from "ncp";
+// const { spawn } = require("child_process");
+import { spawn } from "child_process";
 
-const pkg = require("./package.json");
+// const pkg = require("./package.json");
+import pkg from "./package.json" with { type: "json" };
+
+(async function(){
 
 const platform = process.platform;
 const v8Version = process.versions.v8;
@@ -45,7 +51,8 @@ let buildReleaseDir = buildDir + "Release/";
 if (!fs.existsSync(buildDir)) fs.mkdirSync(buildDir);
 if (!fs.existsSync(buildReleaseDir)) fs.mkdirSync(buildReleaseDir);
 
-let genPkg = require(`${generatePath}/package.json`);
+// let genPkg = require(`${generatePath}/package.json`);
+let genPkg = await import(`${generatePath}/package.json`).then(m => m.default);
 let {sdkPath} = genPkg;
 let runtimeDir = ``;
 
@@ -173,4 +180,6 @@ function actionsAfter() {
   } else {
     process.stderr.write(`\nFailed to compile bindings for ${vkVersion}!`);
   }
+})();
+
 })();

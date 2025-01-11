@@ -1,7 +1,7 @@
 import fs from "fs";
 import https from "https";
 
-import pkg from "../package.json";
+import pkg from "../package.json" with { type: "json" };
 
 import nunjucks from "nunjucks";
 
@@ -26,6 +26,11 @@ import {
   getSortedIncludes,
   isCurrentPlatformSupportedExtension
 } from "./utils.mjs";
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log('[Error] Unhandled Rejection at: Promise', p, 'reason:', reason);
+  // application specific logging, throwing an error, or other logic here
+});
 
 const GEN_FILE_NOTICE = `/*
  * MACHINE GENERATED, DO NOT EDIT

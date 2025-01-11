@@ -12,7 +12,7 @@ import yauzl from "yauzl";
 import readline from "readline";
 import { Transform } from "stream";
 
-import pkg from "../package.json";
+import pkg from "../package.json" with { type: "json" };
 
 import {
   warn,

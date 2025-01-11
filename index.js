@@ -4,7 +4,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const pkg = require("./package.json");
+// const pkg = require("./package.json");
+import pkg from "./package.json" with { type: "json" };
 
 function throwInvalidVkVersion() {
   process.stderr.write(`Invalid vulkan version specifier!\n`);
